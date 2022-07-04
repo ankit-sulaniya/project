@@ -1,0 +1,41 @@
+
+Tinkercad project code:
+
+
+// C++ code
+//
+#define POT_PIN A0
+int i;
+void setup()
+{ 
+  for(i=2;i<=13;i++)
+  {
+    pinMode(i, OUTPUT);
+  } 
+}
+
+void loop()
+{ 
+  //when LED blick Right to teft(pin_2 to pin_13)
+  for(i=2; i<=13; i++)
+  { digitalWrite(i, HIGH);
+   
+    int potVal = analogRead(POT_PIN);
+    int time = map(potVal, 0, 1023, 1, 1000);
+   
+    delay(time); // Wait for time millisecond(s)
+    digitalWrite(i, LOW);
+  }
+  
+  //when LED blick left to Right(pin_13 to pin_2)
+  for(i=13; i>=2; i--)
+  { digitalWrite(i, HIGH);
+   
+    int potVal = analogRead(POT_PIN);
+   	int time = map(potVal, 0, 1023, 1, 1000);
+    
+  
+    delay(time); // Wait for time millisecond(s)
+    digitalWrite(i, LOW);  
+  }
+}
